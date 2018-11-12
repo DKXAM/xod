@@ -20,7 +20,7 @@ const scrollDown = el => (el.scrollTop = el.scrollHeight - el.clientHeight);
 const scrollDownBy = (amount, el) => (el.scrollTop += amount);
 /* eslint-enable no-param-reassign */
 
-const isScrolledDownThreshold = 0;
+const isScrolledDownThreshold = 10;
 
 class Autoscroll extends React.PureComponent {
   constructor(props) {
@@ -53,6 +53,7 @@ class Autoscroll extends React.PureComponent {
   }
   scrollDown() {
     scrollDown(this._el);
+    this._isScrolledDown = true;
   }
   handleScroll(e) {
     const nextIsScrolledDown = isScrolledDown(
